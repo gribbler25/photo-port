@@ -7,9 +7,9 @@ function App() {
   //this is not HTML but 'JSX', works like document.createElement.
   return (
     <div>
-      <Nav></Nav>
+      <Nav />
       <main>
-        <About></About>
+        <About />
       </main>
     </div>
   );
