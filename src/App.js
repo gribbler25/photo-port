@@ -19,7 +19,9 @@ function App() {
       description: "Fields, farmhouses, waterfalls, and the beauty of nature",
     },
   ]);
+
   const [currentCategory, setCurrentCategory] = useState(categories[0]); //here the initial state is estabilshed with 'setCurrentCategory' to change the state(to a different index of the array?) when needed
+  //use state can have a function as an argument too.  Won't re-process this state each time.
 
   return (
     <div>
@@ -30,7 +32,7 @@ function App() {
       ></Nav>
       <main>
         <div>
-          <Gallery />
+          <Gallery currentCategory={currentCategory} />
           <About />
         </div>
       </main>
