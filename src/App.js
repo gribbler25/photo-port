@@ -3,6 +3,7 @@ import "./App.css";
 import About from "./components/About";
 import Nav from "./components/Nav";
 import Gallery from "./components/Gallery";
+import ContactForm from "./components/Contact";
 
 function App() {
   //this is not HTML but 'JSX', works like document.createElement.
@@ -32,6 +33,7 @@ function App() {
       ></Nav>
       <main>
         <div>
+          <ContactForm />
           <Gallery currentCategory={currentCategory} />
           <About />
         </div>
