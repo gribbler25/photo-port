@@ -1,22 +1,14 @@
-const Nav = () => {
-  const categories = [
-    {
-      name: "commercial",
-      description:
-        "Photos of grocery stores, food trucks, and other commercial projects",
-    },
-    { name: "portraits", description: "Portraits of people in my life" },
-    { name: "food", description: "Delicious delicacies" },
-    {
-      name: "landscape",
-      description: "Fields, farmhouses, waterfalls, and the beauty of nature",
-    },
-  ];
-  function categorySelected(name) {
-    console.log(`${name} clicked`);
-  }
+import React, { useEffect } from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers";
+
+const Nav = (props) => {
+  const { categories = [], setCurrentCategory, currentCategory } = props;
+  useEffect(() => {
+    document.title = capitalizeFirstLetter(currentCategory.name);
+  }, [currentCategory]); //second argument directs this hook to re-render the component upon change to the value of this 'currentCategory' state..
+
   return (
-    <header>
+    <header className="flex-row px-1">
       <h2>
         <a data-testid="link" href="/">
           <span role="img" aria-label="camera">
@@ -29,7 +21,7 @@ const Nav = () => {
       <nav>
         <ul className="flex-row">
           <li className="mx-2">
-            <a data-testid="about" href="#about">
+            <a href="#about" data-testid="about">
               About me
             </a>
           </li>
@@ -37,9 +29,21 @@ const Nav = () => {
             <span>Contact</span>
           </li>
           {categories.map((category) => (
-            <li className="mx-1" key={category.name}>
-              <span onClick={() => categorySelected(category.name)}>
-                {category.name}
+            <li
+              className={
+                //as long as 'currentCategory.name === category.name' is valuated to 'true' the "navActive" className is appiled/returned(it's a color change class)..
+                `mx-1 ${currentCategory.name === category.name && "navActive"}`
+              }
+              key={category.name}
+            >
+              <span
+                onClick={() => {
+                  //for each catagory in the array this onClick 'listener' is placed on the the title in a span within a list element
+                  setCurrentCategory(category);
+                }}
+              >
+                {/* //this is the actual name of the title you see in the nav bar */}
+                {capitalizeFirstLetter(category.name)}
               </span>
             </li>
           ))}
