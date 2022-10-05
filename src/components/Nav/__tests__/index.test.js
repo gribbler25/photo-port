@@ -3,6 +3,8 @@ import { render, cleanup, getAllByLabelText } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Nav from "..";
 
+afterEach(cleanup);
+
 const categories = [
   { name: "portraits", description: "Portraits of people in my life" },
 ];
@@ -69,5 +71,3 @@ describe("links are visible", () => {
     expect(getByTestId("about")).toHaveTextContent("About me");
   });
 });
-
-afterEach(cleanup);
