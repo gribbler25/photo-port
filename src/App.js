@@ -3,6 +3,7 @@ import "./App.css";
 import About from "./components/About";
 import Nav from "./components/Nav";
 import Gallery from "./components/Gallery";
+import ContactForm from "./components/Contact";
 
 function App() {
   //this is not HTML but 'JSX', works like document.createElement.
@@ -22,6 +23,7 @@ function App() {
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]); //here the initial state is estabilshed with 'setCurrentCategory' to change the state(to a different index of the array?) when needed
   //use state can have a function as an argument too.  Won't re-process this state each time.
+  const [contactSelected, setContactSelected] = useState(false);
 
   return (
     <div>
@@ -29,11 +31,19 @@ function App() {
         categories={categories}
         setCurrentCategory={setCurrentCategory}
         currentCategory={currentCategory}
-      ></Nav>
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
+      />
       <main>
         <div>
-          <Gallery currentCategory={currentCategory} />
-          <About />
+          {!contactSelected ? (
+            <>
+              <Gallery currentCategory={currentCategory} />
+              <About />
+            </>
+          ) : (
+            <ContactForm />
+          )}
         </div>
       </main>
     </div>
