@@ -35,7 +35,6 @@ function App() {
         setContactSelected={setContactSelected}
       />
       <main>
-        {/* <div> */}
         {!contactSelected ? (
           <>
             <Gallery currentCategory={currentCategory} />
@@ -44,7 +43,6 @@ function App() {
         ) : (
           <ContactForm />
         )}
-        {/* </div> */}
       </main>
     </div>
   );

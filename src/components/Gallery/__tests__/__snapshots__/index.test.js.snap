@@ -12,6 +12,7 @@ exports[`matches snapshot 1`] = `
       Portraits of people in my life
     </p>
     <div>
+      <div />
       <div
         class="flex-row"
       >
